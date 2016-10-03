@@ -4,11 +4,6 @@
 
 var socket = io('http://localhost:3000/');
 
-
-
-
-
-
 var Dom = {
 
   get:  function(id)                     { return ((id instanceof HTMLElement) || (id === document)) ? id : document.getElementById(id); },
@@ -164,55 +159,9 @@ var Game = {  // a modified version of the game loop from my previous boulderdas
 
   //---------------------------------------------------------------------------
 
-
-
-  // setKeyListener: function() {socket.on('key', function(keys){
-  //   console.log('keys AKA keyCode', keys)
-
-  //   var onkey = function(keyCode, mode) {
-
-  //     console.log('keycode', keys)
-  //     // console.info('mode', mode);
-  //     console.info('keyCode', keyCode);
-  //     console.info('mode', mode);
-  //   // var keysSocket = [
-  //   //   'Det er her keyCode kommer inn og sendes videre, slik at det er her vi putter inn socket verdiene i stede for !!! '
-  //   // ]
-  //       var n, k;
-  //       for(n = 0 ; n < keys.length ; n++) {
-  //         k = keys[n];
-  //         k.mode = k.mode || 'up';
-  //         if ((k.key == keyCode) || (k.keys && (k.keys.indexOf(keyCode) >= 0))) {
-  //           if (k.mode == mode) {
-  //             k.action.call();
-  //           }
-  //         }
-  //       }
-  //   };
-  //   Dom.on(document, 'keydown', function(ev) { onkey(ev.keyCode, 'down'); } );
-  //   Dom.on(document, 'keyup',   function(ev) { onkey(ev.keyCode, 'up');   } );
-
-  //   })
-  // },
-
     setKeyListener: function(keys) {
 
-    console.log('keys-->', keys);
-
     var onkey = function(keyCode, mode) {
-
-    socket.on('key', function(keyTouchObj){
-      console.info('keyTouchObj', keyTouchObj)
-
-      var mode = keyTouchObj.mode;
-
-    });
-
-      // console.info('KB mode', mode);
-      // console.info('KB keyCode', keyCode);
-    // var keysSocket = [
-    //   'Det er her keyCode kommer inn og sendes videre, slik at det er her vi putter inn socket verdiene i stede for !!! '
-    // ]
         var n, k;
         for(n = 0 ; n < keys.length ; n++) {
           k = keys[n];
@@ -227,31 +176,6 @@ var Game = {  // a modified version of the game loop from my previous boulderdas
     Dom.on(document, 'keydown', function(ev) { onkey(ev.keyCode, 'down'); } );
     Dom.on(document, 'keyup',   function(ev) { onkey(ev.keyCode, 'up');   } );
   },
-
-  // setKeyListener: function(keys) {
-  //   console.log('KB keys', keys)
-  //   // socket.on('key', function(keyCode){
-  //   // });
-  //   var onkey = function(keyCode, mode) {
-  //     console.info('KB mode', mode);
-  //     console.info('KB keyCode', keyCode);
-  //   // var keysSocket = [
-  //   //   'Det er her keyCode kommer inn og sendes videre, slik at det er her vi putter inn socket verdiene i stede for !!! '
-  //   // ]
-  //       var n, k;
-  //       for(n = 0 ; n < keys.length ; n++) {
-  //         k = keys[n];
-  //         k.mode = k.mode || 'up';
-  //         if ((k.key == keyCode) || (k.keys && (k.keys.indexOf(keyCode) >= 0))) {
-  //           if (k.mode == mode) {
-  //             k.action.call();
-  //           }
-  //         }
-  //       }
-  //   };
-  //   Dom.on(document, 'keydown', function(ev) { onkey(ev.keyCode, 'down'); } );
-  //   Dom.on(document, 'keyup',   function(ev) { onkey(ev.keyCode, 'up');   } );
-  // },
 
   //---------------------------------------------------------------------------
 
