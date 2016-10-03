@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="common.css" rel="stylesheet" type="text/css" />
+
+  <script type='text/javascript' src='../src/jquery-3.1.0.min.js'></script>
+  <script src="/socket.io/socket.io.js"></script>
+
+</head>
+
+<body>
+
+<div class="controller-wrapper">
+
+  <div id="popup2" class="modal-box-touch">
+
+    <div class="modal-body">
+
+      <div class="popup-header">
+        BRA JOBBA!
+      </div>
+
+    <a href="#" class="btn btn-small js-modal-close">
+      <div class="popup-message">
+        Trykk her for
+        <br>
+        å begynne
+      </div>
+    </a>
+
+  </div>
+
+  </div>
+
+
+  <div class="key-forward">
+    GASS
+  </div>
+
+  <div class="key-left">
+    ←
+  </div>
+
+  <a href="#" class="btn btn-small js-modal-close">
+    <div class="start-over">
+      Start på nytt
+    </div>
+  </a>
+
+</div>
+
+<script>
+
+var socket = io('http://localhost:3000/');
+
+$( document ).ready(function() {
+
+
+  // POPUP
+
+  socket.on('popUp', function(){
+
+    var appendthis =  ("<div class='modal-overlay js-modal-close'></div>");
+
+    $("body").append(appendthis);
+    $(".modal-overlay").fadeTo(500, 0.7);
+    //$(".js-modalbox").fadeIn(500);
+    $('#popup2').fadeIn($(this).data());
+
+
+    $(".js-modal-close").click(function() {
+        $(".modal-box-touch, .modal-overlay").fadeOut(500, function() {
+            $(".modal-overlay").remove();
+        });
+    });
+
+    $(window).resize(function() {
+        $(".modal-box-touch").css({
+            top: ($(window).height() - $(".modal-box-touch").outerHeight()) / 2,
+            left: ($(window).width() - $(".modal-box-touch").outerWidth()) / 2
+        });
+    });
+
+    $(window).resize();
+
+  });
+
+  $(".js-modal-close").click(function() {
+
+    $(".modal-box-touch, .modal-overlay").fadeOut(500, function() {
+        $(".modal-overlay").remove();
+    });
+    socket.emit('closePopUp');
+  });
+
+  // FINISH POPUP
+
+
+
+  function simulateKeyPress(character) {
+    console.info('character', character);
+    $.event.trigger({ type : 'keypress', which : character });
+  };
+
+  var moveUp = function() {
+    console.log('Moving up!');
+  };
+
+  var moveLeft = function() {
+    console.log('Moving left!');
+  };
+
+  var moveRight = function() {
+    console.log('Moving right!');
+  };
+
+  // sendes dette til displayet? Tror ikke det.
+  $('body').keydown(function(e) {
+    switch (e.keyCode) {
+      case 37:
+        moveLeft();
+        simulateKeyPress(37);
+        break;
+      case 38:
+        moveUp();
+        simulateKeyPress(e);
+        break;
+      case 39:
+        moveRight();
+        simulateKeyPress(39);
+        break;
+    }
+  });
+
+
+  $('.key-up').click(moveUp);
+
+  $('.key-left').click(moveLeft);
+
+  $('#right-btn').click(moveRight);
+
+
+
+  $('.key-forward').mousedown(function(e) {
+      simulateKeyPress(38);
+  }).mouseup(function(){
+
+  });
+
+
+
+
+  $('.key-forward').mousedown(function() {
+    socket.emit('key', {keyCode: 38, mode: 'down'});
+    // socket.emit('touch', 'down');
+  }).mouseup(function(){
+    socket.emit('key', {keyCode: 38, mode: 'up'});
+  });
+
+});
+
+</script>
+
+<script src="common.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,460 @@
+@font-face {
+font-family: Circular;
+src: url("font/CircularStd-Book.otf") format("opentype");
+}
+
+@font-face {
+font-family: Tungsten-Bold;
+src: url("font/Tungsten-Bold.otf") format("opentype");
+}
+
+@font-face {
+font-family: Tungsten-Medium;
+src: url("font/Tungsten-Medium.otf") format("opentype");
+}
+
+body{
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  background-color:#171d32;
+  margin:0;
+  font-family: Circular;
+}
+
+button:focus {outline:0;}
+:focus{outline:0;}
+
+/* VIDEO */
+
+.video-wrapper{
+  visibility: hidden;
+  z-index: 100;
+  position: absolute;
+  float: right;
+}
+
+.video{
+
+}
+/* FINISH VIDEO */
+
+#image-container{
+  z-index: 10;
+  float: right;
+  background-color:black;
+  width:960px;
+  height:540px;
+  overflow:hidden;
+  position:relative;
+}
+
+.images{
+  position: absolute;
+  width:960px;
+  height:540px;
+}
+.image01{
+  z-index: 11;
+}
+.image02{
+  z-index: 12;
+}
+.image03{
+  z-index: 13;
+}
+.image04{
+  z-index: 14;
+}
+.image05{
+  z-index: 15;
+}
+.image06{
+  z-index: 16;
+}
+.video01{
+  z-index: 17;
+  width: 1000px;
+}
+
+/*timeline-animation*/
+
+.gradient-img{
+  position: absolute;
+  z-index: 3;
+  width: 600px;
+  margin-top: 20px;
+  margin-left: 250px;
+}
+
+.year-wrapper{
+  position: absolute;
+  right: 100px;
+}
+
+.year-number {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  transform: translateX(-900px);
+  width: 100px;
+  height: 50px;
+  color: #000;
+  background: #fff;
+  margin-left: -100px;
+  margin-top: 40px;
+  font-size: 45px;
+  padding: 10px 10px 10px 10px;
+}
+
+.year1 {
+  position: absolute;
+}
+.year2 {
+  position: absolute;
+}
+.year3 {
+  position: absolute;
+}
+.year4 {
+  position: absolute;
+}
+
+
+.timeline-animation {
+  z-index: 1;
+  position: absolute;
+  margin-top: 75px;
+  height: 2px;
+  background-color: #e3e249;
+  border: none;
+  width: 1000px;
+  right: 50px;
+
+}
+
+/* Finish timeline-animation*/
+
+/*Text animation*/
+.text-wrapper{
+  position: absolute;
+  font-size: 33px;
+  color: #fff;
+  width: 675px;
+  margin-top: 650px;
+  margin-left: 142px;
+  margin-bottom: 25px;
+  line-height: 42px;
+  opacity: .85;
+}
+
+.text01{
+  position: absolute;
+}
+.text02{
+  position: absolute;
+}
+.text03{
+  position: absolute;
+}
+.text04{
+  position: absolute;
+}
+.text05{
+  position: absolute;
+}
+
+/* Finish Text animation*/
+
+
+
+#playPause{
+  position: absolute;
+  z-index:1000;
+  margin-top: 0px;
+  background: #515151;
+  color: #fff;
+  border-radius: 10%;
+  border: none;
+}
+
+
+/*TIMELINE*/
+
+#slider {
+  z-index: 1;
+  position: relative;
+  width: 2000px;
+  height: 525px;
+  top: 200px;
+  right: 50px;
+}
+
+.ui-slider .ui-slider-handle {
+  background: #fff;
+  width: 50px !important;
+  margin-left: -20px !important;
+  height:125px !important;
+  margin-top:-10px !important;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    border: 0px dotted #d3d3d3;
+    background: #515050 50% 50% repeat-x;
+    font-weight: normal;
+    color: #555;
+}
+
+.ui-slider-horizontal .ui-slider-handle {
+    top: -.3em;
+    margin-left: -.6em;
+}
+
+.ui-slider .ui-slider-handle {
+    position: absolute;
+    z-index: 2;
+    width: 1.2em;
+    height: 1.2em;
+    cursor: default;
+    -ms-touch-action: none;
+    touch-action: none;
+}
+
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
+    border-bottom-right-radius: 4px;
+}
+.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl {
+    border-bottom-left-radius: 4px;
+}
+.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr {
+    border-top-right-radius: 4px;
+}
+.ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl {
+    border-top-left-radius: 4px;
+}
+
+.ui-widget-content {
+    border: 0px solid #aaa;
+    background: #333333 50% 50% repeat-x;
+    color: #222;
+}
+
+.ui-slider-horizontal {
+    height: .8em;
+}
+
+.ui-slider {
+    position: relative;
+    text-align: left;
+}
+
+button {
+  width: 100px;
+  padding:10px;
+}
+
+
+
+/* STATS */
+
+.stats {
+  position: absolute;
+  margin-top: 610px;
+  margin-left: 960px;
+}
+
+.stats-text{
+  font-size: 20px;
+  color: #fff;
+  letter-spacing: 1.5px;
+  margin-bottom: 5px;
+}
+
+.stats-numbers{
+  font-family: Tungsten-Medium;
+  font-size: 75px;
+  color: #efe55d;
+  margin-bottom: 25px;
+  letter-spacing: 5px;
+}
+
+
+/* FINISH STATS */
+
+
+/* World Map*/
+
+.worldmap-wrapper {
+  position: absolute;
+  width: 960px;
+  margin-top: 575px;
+  margin-left: 1150px;
+}
+.worldmap{
+  position: absolute;
+  width: 800px;
+}
+.country1-1 {
+  position: absolute;
+  opacity: 0;
+  width: 800px;
+}
+.country1-2 {
+  position: absolute;
+  width: 800px;
+}
+.country1-3 {
+  position: absolute;
+  width: 800px;
+}
+
+.country2-1 {
+  position: absolute;
+  width: 800px;
+}
+.country2-2{
+  position: absolute;
+  width: 800px;
+}
+
+
+/* Finish Word Map*/
+
+
+/*Fra codepen*/
+
+.video-wrapper {
+  display: none;
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+}
+
+#vid {
+  margin-top: 20px;
+}
+
+#spin {
+  width: 110px;
+  height: 110px;
+  background-color: #757575;
+  border-radius: 50%;
+  margin: auto;
+  margin-top: 30px;
+  border: 5px solid #333;
+}
+
+#spin .thumb {
+  width: 25px;
+  height: 25px;
+  top: 20px;
+  left: 20px;
+  position: absolute;
+  background-color: #333;
+  border-radius: 50%;
+}
+
+#rail {
+  background-color: #333;
+  height: 5px;
+  width: 360px;
+  overflow: visible;
+  margin: auto;
+  margin-top: 40px;
+  position: relative;
+}
+
+#rail .prog {
+  height: 100%;
+  position: absolute;
+  background-color: #757575;
+  opacity: 0.3;
+}
+
+#rail .thumb {
+  background-color: #757575;
+  width: 15px;
+  height: 40px;
+  border-radius: 3px;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  z-index:1000;
+}
+
+/* iPad */
+
+.anno-wrapper{
+  display: block;
+  width: 100%;
+  margin-top: 600px;
+  margin-left: 125px;
+
+}
+
+.anno{
+  color: #ff001f;
+  background: none;
+  font-family: 'Circular';
+  font-size: 45px;
+  position: relative;
+  display: inline-block;
+  width: 160px;
+  height: 160px;
+  margin-left: 110px;
+  border: 4px #ff001f solid;
+  border-radius: 50%;
+
+  opacity: .4;
+}
+
+.anno-text{
+  margin-left: 32px;
+  margin-top: 46px;
+}
+
+.anno-line2{
+  margin-left: 125px;
+  margin-top: 50px;
+}
+
+.anno-opacity{
+  opacity: 1;
+}
+
+.anno1 {
+
+}
+.anno2 {
+
+}
+.anno3 {
+}
+.anno4 {
+
+}
+.anno5 {
+
+}
+.anno6 {
+
+}
+.anno7 {
+
+}
+.anno8 {
+
+}
+.anno9 {
+
+}
+.anno10 {
+
+}
+.anno11 {
+
+}
+
+
+
+

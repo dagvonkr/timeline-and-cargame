@@ -1,0 +1,29 @@
+**/*.sw[op]
+
+.env
+
+*.tar.gz
+
+# Logs
+logs
+*.log
+
+# Coverage directory used by tools like istanbul
+coverage
+
+
+# Directories:
+backups
+
+
+bower_components
+Gulpfile.js
+node_modules
+npm-debug.log
+
+img
+font
+server-autoreload.js
+
+
+*sublime-*
