@@ -7,6 +7,7 @@
 
   <script type='text/javascript' src='../src/jquery-3.1.0.min.js'></script>
   <script src="/socket.io/socket.io.js"></script>
+  <script type='text/javascript' src='../node_modules/hammerjs/hammer.min.js'></script>
 
 </head>
 
@@ -34,14 +35,13 @@
 
   </div>
 
-
-  <div class="key-forward">
-    GASS
+  <div id="keyboard">
+    <div class="key-forward" data-keycode="38">GASS</div>
+    <div class="key-left" data-keycode="37">←</div>
+    <div class="key-right" data-keycode="39">→</div>
+    <div class="key-stop" data-keycode="40">STOP</div>
   </div>
 
-  <div class="key-left">
-    ←
-  </div>
 
   <a href="#" class="btn btn-small js-modal-close">
     <div class="start-over">
@@ -94,69 +94,24 @@ $( document ).ready(function() {
     });
     socket.emit('closePopUp');
   });
-
   // FINISH POPUP
 
-
-
-  function simulateKeyPress(character) {
-    console.info('character', character);
-    $.event.trigger({ type : 'keypress', which : character });
-  };
-
-  var moveUp = function() {
-    console.log('Moving up!');
-  };
-
-  var moveLeft = function() {
-    console.log('Moving left!');
-  };
-
-  var moveRight = function() {
-    console.log('Moving right!');
-  };
-
-  // sendes dette til displayet? Tror ikke det.
-  $('body').keydown(function(e) {
-    switch (e.keyCode) {
-      case 37:
-        moveLeft();
-        simulateKeyPress(37);
-        break;
-      case 38:
-        moveUp();
-        simulateKeyPress(e);
-        break;
-      case 39:
-        moveRight();
-        simulateKeyPress(39);
-        break;
-    }
+//  HammerJS Touch Interactions
+  var keyboardElem = document.getElementById('keyboard');
+  var hammertime = new Hammer(keyboardElem,{
+    recognizers: [
+      [Hammer.Press,{ time: 100 }],
+    ]
   });
 
-
-  $('.key-up').click(moveUp);
-
-  $('.key-left').click(moveLeft);
-
-  $('#right-btn').click(moveRight);
-
-
-
-  $('.key-forward').mousedown(function(e) {
-      simulateKeyPress(38);
-  }).mouseup(function(){
-
+  hammertime.on("press", function(ev) {
+    var keyCodeVar = $(ev.target).data('keycode')
+    if (keyCodeVar) socket.emit('key', {keyCode: keyCodeVar, type : "keydown"});
   });
 
-
-
-
-  $('.key-forward').mousedown(function() {
-    socket.emit('key', {keyCode: 38, mode: 'down'});
-    // socket.emit('touch', 'down');
-  }).mouseup(function(){
-    socket.emit('key', {keyCode: 38, mode: 'up'});
+  hammertime.on("pressup", function(ev) {
+    var keyCodeVar = $(ev.target).data('keycode')
+    if (keyCodeVar) socket.emit('key', {keyCode: keyCodeVar, type : "keyup"});
   });
 
 });
